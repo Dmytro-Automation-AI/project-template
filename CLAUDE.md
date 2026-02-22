@@ -3,7 +3,7 @@
 ## First Steps (every session)
 1. Read `AGENTS.md` for full project instructions and rules
 2. Read `memory/STATUS.md` for current project state
-3. Read `docs/EXPERTISE.md` for project expertise (auto-generated from Mulch)
+3. Run `npx mulch-cli prime` to load project expertise
 
 ## Quick Reference
 - **Project:** [Project Name]

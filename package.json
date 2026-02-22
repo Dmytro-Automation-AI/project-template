@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "prepare": "git config core.hooksPath .githooks",
-    "expertise": "npx mulch-cli prime > docs/EXPERTISE.md"
+    "prepare": "git config core.hooksPath .githooks"
   }
 }
