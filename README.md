@@ -38,5 +38,4 @@ This enables the pre-commit hook that enforces `memory/STATUS.md` updates.
 ## Documents
 - `meetings/` — call transcripts and summaries
 - `memory/STATUS.md` — current project state (always up to date)
-- `decisions/` — decision records (numbered)
 - `src/` — source code and scripts

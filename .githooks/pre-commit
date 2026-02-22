@@ -4,7 +4,6 @@
 
 STAGED=$(git diff --cached --name-only)
 
-HAS_WORK_FILES=$(echo "$STAGED" | grep -vE '^(memory/|decisions/|meetings/|docs/|README\.md|AGENTS\.md|HANDOFF\.md|ARCHITECTURE\.md|\.githooks/|\.gitkeep|\.gitignore|\.mulch/)' | head -1)
 
 HAS_STATUS=$(echo "$STAGED" | grep -c 'memory/STATUS.md')
 
@@ -13,7 +12,6 @@ if [ -n "$HAS_WORK_FILES" ] && [ "$HAS_STATUS" -eq 0 ]; then
     echo "WARNING: You're committing work files but memory/STATUS.md wasn't updated."
     echo ""
     echo "   Changed files:"
-    echo "$STAGED" | grep -vE '^(memory/|decisions/|meetings/|docs/|\.mulch/)' | sed 's/^/     /'
     echo ""
     echo "   Please update memory/STATUS.md to reflect current project state."
     echo "   To skip this check: git commit --no-verify"

@@ -23,7 +23,6 @@
 ### Always
 - Read `memory/STATUS.md` before starting any work
 - Write clear commit messages (conventional commits: `feat:`, `fix:`, `docs:`)
-- Document decisions in `decisions/` when choosing between alternatives
 - Log daily work in `memory/YYYY-MM-DD.md`
 
 ### Ask First
@@ -37,7 +36,6 @@
 ├── README.md          # Project overview for humans
 ├── .mulch/            # Structured expertise (Mulch CLI)
 │   └── expertise/     # JSONL files per domain
-├── decisions/         # Decision records (numbered)
 ├── memory/            # Project memory (markdown)
 │   ├── STATUS.md      # Current state — READ THIS FIRST
 │   └── YYYY-MM-DD.md  # Daily work logs
@@ -66,7 +64,6 @@ npx mulch-cli status             # Check expertise freshness
 | convention | content | "Always use UTC timestamps" |
 | pattern | name, description | Named patterns with file references |
 | failure | description, resolution | What went wrong and how to fix it |
-| decision | title, rationale | Architecture decisions and reasoning |
 | reference | name, description | Key files, endpoints, links |
 | guide | name, description | Step-by-step procedures |
 
@@ -87,7 +84,6 @@ Agents MUST save progress at these checkpoints:
 
 ### Auto-Save Triggers
 1. **Task completion** — Update `memory/STATUS.md` (move item from "In Progress" to "Done")
-2. **Decision made** — Create `decisions/NNN-title.md` with what/why/alternatives
 3. **Session end** — Append summary to `memory/YYYY-MM-DD.md`
 4. **Blocker hit** — Update STATUS.md with blocker details immediately
 5. **Every 30 minutes of active work** — Quick STATUS.md update
@@ -111,11 +107,9 @@ Always maintain this structure in `memory/STATUS.md`:
 - [ ] Planned items in priority order
 
 ## Key Context
-- Important decisions, client preferences, gotchas
 ```
 
 ### Decision Record Format
-File: `decisions/NNN-short-title.md`
 ```markdown
 # NNN: Short Title
 **Date:** YYYY-MM-DD
