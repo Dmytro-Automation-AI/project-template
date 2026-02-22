@@ -14,7 +14,7 @@
 ## Working Rules
 
 ### Critical
-- NEVER commit secrets, API keys, or credentials
+- NEVER commit secrets, API keys, or credentials (project test accounts in `docs/` are fine)
 - NEVER push directly to `main` — always use feature branches + PRs
 - ALWAYS update `memory/STATUS.md` after completing a milestone
 - ALWAYS run `npx mulch-cli prime` at session start to load project expertise
@@ -35,20 +35,20 @@
 ├── AGENTS.md          # You are here — agent instructions
 ├── README.md          # Project overview for humans
 ├── .mulch/            # Structured expertise (Mulch CLI)
-│   └── expertise/     # JSONL files per domain
-├── memory/            # Project memory (markdown)
+│   └── expertise/     # JSONL files per domain (add with: npx mulch-cli add <name>)
+├── memory/            # Narrative memory (markdown)
 │   ├── STATUS.md      # Current state — READ THIS FIRST
 │   └── YYYY-MM-DD.md  # Daily work logs
 ├── meetings/          # Call transcripts and summaries
-├── docs/              # Requirements, specs, references
+├── docs/              # Specs, references, test accounts
 └── src/               # Source code and scripts
 ```
 
-## Mulch Expertise System
+## Knowledge System
 
-We use [Mulch CLI](https://github.com/jayminwest/mulch) for structured project expertise alongside markdown memory.
+We use a **hybrid approach**: Mulch CLI for structured/searchable knowledge, markdown for narrative/state.
 
-### Quick Commands
+### Mulch (structured knowledge)
 ```bash
 npx mulch-cli prime              # Load all expertise (run at session start)
 npx mulch-cli prime <domain>     # Load one domain only
@@ -56,78 +56,30 @@ npx mulch-cli query --all        # Browse all expertise
 npx mulch-cli search "keyword"   # Search across domains
 npx mulch-cli record <domain> --type <type> "content"  # Record new expertise
 npx mulch-cli status             # Check expertise freshness
+npx mulch-cli add <domain>       # Add a new domain
 ```
 
-### Record Types
-| Type | Required Fields | Use Case |
-|------|----------------|----------|
-| convention | content | "Always use UTC timestamps" |
-| pattern | name, description | Named patterns with file references |
-| failure | description, resolution | What went wrong and how to fix it |
-| reference | name, description | Key files, endpoints, links |
-| guide | name, description | Step-by-step procedures |
+**Record types:** convention, pattern, failure, decision, reference, guide
 
 ### When to Use What
-| Need | Tool |
-|------|------|
-| Current project state | `memory/STATUS.md` |
+| What you have | Where it goes |
+|---|---|
+| Current project state (done/doing/next) | `memory/STATUS.md` |
 | Daily work log | `memory/YYYY-MM-DD.md` |
-| Meeting notes | `meetings/` |
-| Technical convention/pattern | `mulch record --type convention` |
-| Failure + resolution | `mulch record --type failure` |
-| Architecture decision | `mulch record --type decision` |
-| Key resource/link | `mulch record --type reference` |
-
-## Memory Rules (Auto-Save System)
-
-Agents MUST save progress at these checkpoints:
+| Meeting transcript or summary | `meetings/` |
+| Large specs, docs, test accounts | `docs/` |
+| Technical convention or pattern | `mulch record --type convention` or `pattern` |
+| Something broke + how to fix it | `mulch record --type failure` |
+| Architecture/tech decision + rationale | `mulch record --type decision` |
+| Key link, endpoint, or contact | `mulch record --type reference` |
+| Step-by-step procedure | `mulch record --type guide` |
 
 ### Auto-Save Triggers
-1. **Task completion** — Update `memory/STATUS.md` (move item from "In Progress" to "Done")
-3. **Session end** — Append summary to `memory/YYYY-MM-DD.md`
-4. **Blocker hit** — Update STATUS.md with blocker details immediately
-5. **Every 30 minutes of active work** — Quick STATUS.md update
-6. **Learning discovered** — `mulch record` to capture expertise
-
-### STATUS.md Format
-Always maintain this structure in `memory/STATUS.md`:
-```markdown
-## Current State
-- Phase: [Discovery/Design/MVP/Testing/Launch]
-- Last updated: [date + who/what agent]
-- Blocked by: [nothing / description]
-
-## Done
-- [x] Completed items with dates
-
-## In Progress
-- [ ] Current work items (with % if applicable)
-
-## Next Up
-- [ ] Planned items in priority order
-
-## Key Context
-```
-
-### Decision Record Format
-```markdown
-# NNN: Short Title
-**Date:** YYYY-MM-DD
-**Status:** Accepted/Proposed/Superseded
-
-## Context
-What prompted this decision?
-
-## Decision
-What was decided?
-
-## Alternatives Considered
-- Option A: [pros/cons]
-- Option B: [pros/cons]
-
-## Consequences
-What follows from this decision?
-```
+1. **Task completion** → Update STATUS.md (move item to "Done")
+2. **Learning discovered** → `mulch record` immediately
+3. **Session end** → Append summary to `memory/YYYY-MM-DD.md`
+4. **Blocker hit** → Update STATUS.md with details immediately
+5. **Every 30 min of active work** → Quick STATUS.md update
 
 ## Agent Handoff Protocol
 
@@ -135,4 +87,4 @@ When finishing work and another agent (or human) will continue:
 1. Update `memory/STATUS.md` with exact current state
 2. Record any learnings with `mulch record`
 3. Commit and push all changes
-4. If mid-task: leave a clear note in STATUS.md about where you stopped and what's next
+4. If mid-task: leave a clear note in STATUS.md about where you stopped

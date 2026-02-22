@@ -38,4 +38,5 @@ This enables the pre-commit hook that enforces `memory/STATUS.md` updates.
 ## Documents
 - `meetings/` — call transcripts and summaries
 - `memory/STATUS.md` — current project state (always up to date)
-- `src/` — source code and scripts
+- `docs/` — specs, references, test accounts
+- `.mulch/expertise/` — structured project knowledge (query with `npx mulch-cli query --all`)
