@@ -36,7 +36,6 @@ This enables the pre-commit hook that enforces `memory/STATUS.md` updates.
 **Start here:** Read `AGENTS.md` then `memory/STATUS.md` before doing any work.
 
 ## Documents
-- `HANDOFF.md` — project handoff doc with full context
 - `meetings/` — call transcripts and summaries
 - `memory/STATUS.md` — current project state (always up to date)
 - `decisions/` — decision records (numbered)

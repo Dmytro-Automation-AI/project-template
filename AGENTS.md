@@ -35,7 +35,6 @@
 ```
 ├── AGENTS.md          # You are here — agent instructions
 ├── README.md          # Project overview for humans
-├── HANDOFF.md         # Client handoff document
 ├── .mulch/            # Structured expertise (Mulch CLI)
 │   └── expertise/     # JSONL files per domain
 ├── decisions/         # Decision records (numbered)
@@ -81,7 +80,6 @@ npx mulch-cli status             # Check expertise freshness
 | Failure + resolution | `mulch record --type failure` |
 | Architecture decision | `mulch record --type decision` |
 | Key resource/link | `mulch record --type reference` |
-| Client handoff context | `HANDOFF.md` |
 
 ## Memory Rules (Auto-Save System)
 
