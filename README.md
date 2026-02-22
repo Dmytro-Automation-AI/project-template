@@ -28,7 +28,7 @@
 
 ## Setup After Cloning
 ```bash
-git config core.hooksPath .githooks
+npm install  # auto-configures git hooks via prepare script
 ```
 This enables the pre-commit hook that enforces `memory/STATUS.md` updates.
 
