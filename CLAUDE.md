@@ -11,6 +11,13 @@
 - **Repo:** [GitHub URL]
 - **Test account:** see `docs/test-accounts.md`
 
+## MCP Server Configuration
+MCP servers for Claude Code are configured in `~/.claude.json` (top-level `mcpServers` key).
+- **User-level (global):** `~/.claude.json` → `mcpServers` object
+- **Project-scoped (shared):** `.mcp.json` in the project root
+- **NOT** `~/.claude/.mcp.json` or `~/.claude/settings.json` — those are ignored for MCP
+- Use `claude mcp add <name> ...` CLI or edit `~/.claude.json` directly
+
 ## Rules
 - Update `memory/STATUS.md` after completing any milestone
 - Record learnings with `npx mulch-cli record <domain> --type <type>` before ending session
