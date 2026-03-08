@@ -16,7 +16,7 @@
 
 ### Critical
 - NEVER commit secrets, API keys, or credentials (project test accounts in `docs/` are fine)
-- NEVER push directly to `main` — always use feature branches + PRs
+- Push directly to `main` — no feature branches or PRs needed
 - ALWAYS update `memory/STATUS.md` after completing a milestone
 - ALWAYS run `npx mulch-cli prime` at session start to load project expertise
 - ALWAYS run `npx mulch-cli record` before finishing work to capture learnings
