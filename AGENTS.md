@@ -94,12 +94,21 @@ npx mulch-cli status             # Check expertise freshness
 4. **Blocker hit** → Update STATUS.md with details immediately
 5. **Every 30 min of active work** → Quick STATUS.md update
 
+## End-of-Session Sync (CRITICAL)
+
+**Always run `/project:sync` before ending any work session.**
+
+This slash command (`.claude/commands/sync.md`) does everything in one shot:
+1. Syncs external artifacts (n8n workflows, configs) to `src/`
+2. Updates `memory/STATUS.md`
+3. Appends to `memory/YYYY-MM-DD.md` (safe to run multiple times/day — appends, never overwrites)
+4. Records Mulch entries for new decisions/bugs/patterns
+5. Commits and pushes to GitHub
+
 ## Agent Handoff Protocol
 
 When finishing work and another agent (or human) will continue:
-1. Update `memory/STATUS.md` with exact current state
-2. Record any learnings with `mulch record`
-3. Commit and push all changes
-4. If mid-task: leave a clear note in STATUS.md about where you stopped
+1. Run `/project:sync`
+2. If mid-task: leave a clear note in STATUS.md about exactly where you stopped
 
 This ensures zero-context-loss handoffs between agents and collaborators.
