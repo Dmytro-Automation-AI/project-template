@@ -88,11 +88,11 @@ npx mulch-cli status             # Check expertise freshness
 | Step-by-step procedure | `mulch record --type guide` |
 
 ### Auto-Save Triggers
-1. **Task completion** → Update STATUS.md (move item to "Done")
-2. **Learning discovered** → `mulch record` immediately
-3. **Session end** → Append summary to `memory/YYYY-MM-DD.md`
+1. **After every response where files were changed** → MUST run `/project:sync`
+2. **Task completion** → Update STATUS.md (move item to "Done")
+3. **Learning discovered** → `mulch record` immediately
 4. **Blocker hit** → Update STATUS.md with details immediately
-5. **Every 30 min of active work** → Quick STATUS.md update
+5. **Bug fixed, decision made, pattern found, or significant failure** → MUST run `npx mulch-cli record` immediately
 
 ## End-of-Session Sync (CRITICAL)
 
