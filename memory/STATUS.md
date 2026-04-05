@@ -9,6 +9,7 @@
 - [ ] Nothing right now
 
 ## Done
+- [x] Synced repo to the updated project-template structure: added `docs/index.md` and refreshed agent/session-sync guidance
 - [ ] (nothing yet)
 
 ## In Progress
