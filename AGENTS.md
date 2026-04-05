@@ -1,6 +1,6 @@
 # AGENTS.md — [Project Name]
 
-> Any AI agent working on this project: read this file first, then `memory/STATUS.md`.
+> Any AI agent working on this project: read this file first, then `memory/STATUS.md`, then `docs/index.md` if the project has more than a few moving parts.
 
 ## Project Overview
 - **Client:** [Client Name]
@@ -42,7 +42,8 @@
 │   ├── STATUS.md      # Current state — READ THIS FIRST
 │   └── YYYY-MM-DD.md  # Daily work logs
 ├── meetings/          # Call transcripts and summaries
-├── docs/              # Specs, references, test accounts
+├── docs/              # Durable project docs, specs, references
+│   └── index.md       # Human-readable map of important docs and references
 └── src/               # ALL automation source code and scripts
 ```
 
@@ -76,10 +77,11 @@ npx mulch-cli status             # Check expertise freshness
 ### When to Use What
 | What you have | Where it goes |
 |---|---|
-| Current project state (done/doing/next) | `memory/STATUS.md` |
-| Daily work log | `memory/YYYY-MM-DD.md` |
+| Current project state (done/doing/next/waiting) | `memory/STATUS.md` |
+| Daily work log / session narrative | `memory/YYYY-MM-DD.md` |
 | Meeting transcript or summary | `meetings/` |
-| Large specs, docs, test accounts | `docs/` |
+| Durable specs, runbooks, human-readable project docs | `docs/` |
+| Project doc map / navigation | `docs/index.md` |
 | Automation scripts, workflows, code | `src/` |
 | Technical convention or pattern | `mulch record --type convention` or `pattern` |
 | Something broke + how to fix it | `mulch record --type failure` |
@@ -90,9 +92,12 @@ npx mulch-cli status             # Check expertise freshness
 ### Auto-Save Triggers
 1. **After every response where files were changed** → MUST run `/project:sync`
 2. **Task completion** → Update STATUS.md (move item to "Done")
-3. **Learning discovered** → `mulch record` immediately
-4. **Blocker hit** → Update STATUS.md with details immediately
-5. **Bug fixed, decision made, pattern found, or significant failure** → MUST run `npx mulch-cli record` immediately
+3. **New durable doc, key link, or major reference added** → update `docs/index.md`
+4. **Learning discovered** → `mulch record` immediately
+5. **Session end** → Append summary to `memory/YYYY-MM-DD.md`
+6. **Blocker hit or dependency appears** → Update STATUS.md with details immediately
+7. **Every 30 min of active work** → Quick STATUS.md update
+8. **Bug fixed, decision made, pattern found, or significant failure** → MUST run `npx mulch-cli record` immediately
 
 ## End-of-Session Sync (CRITICAL)
 
@@ -102,8 +107,9 @@ This slash command (`.claude/commands/sync.md`) does everything in one shot:
 1. Syncs external artifacts (n8n workflows, configs) to `src/`
 2. Updates `memory/STATUS.md`
 3. Appends to `memory/YYYY-MM-DD.md` (safe to run multiple times/day — appends, never overwrites)
-4. Records Mulch entries for new decisions/bugs/patterns
-5. Commits and pushes to GitHub
+4. Updates `docs/index.md` when durable docs/links changed materially
+5. Records Mulch entries for new decisions/bugs/patterns
+6. Commits and pushes to GitHub
 
 ## Agent Handoff Protocol
 

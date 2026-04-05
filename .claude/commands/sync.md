@@ -6,9 +6,10 @@ Run at the end of every work session to keep the repository as the single source
 
 1. **Sync any external artifacts** (n8n workflows, configs, generated files) to `src/`
 2. **Update `memory/STATUS.md`** with current project state
-3. **Append to `memory/YYYY-MM-DD.md`** with what changed this session (creates if doesn't exist, appends if it does — safe to run multiple times per day)
-4. **Record Mulch entries** for anything new this session
-5. **Commit and push** everything to GitHub
+3. **Append to `memory/YYYY-MM-DD.md`** with what changed this session
+4. **Update `docs/index.md`** if durable docs, key links, or navigation changed
+5. **Record Mulch entries** for anything new this session
+6. **Commit and push** everything to GitHub
 
 ## Instructions
 
@@ -29,9 +30,12 @@ For other artifacts (scripts, configs, exports) — copy latest versions to `src
 
 Rewrite `memory/STATUS.md` with the current snapshot:
 - Current phase / status
-- What's built and working
-- What's blocked or waiting
+- What is done
+- What is in progress
+- What is next
+- What is blocked or waiting on
 - Immediate next actions
+- Key context / gotchas worth preserving
 
 ### Step 3 — Append to daily log
 
@@ -53,9 +57,18 @@ Append a new section to `memory/YYYY-MM-DD.md` (today's date):
 - ...
 ```
 
-### Step 4 — Record Mulch entries for new things
+### Step 4 — Update docs/index.md when needed
 
-Only record things that are NEW this session:
+Update `docs/index.md` if any of these changed:
+- a new durable doc was created
+- a key external link or system reference changed
+- the project now has enough material that re-entry navigation matters
+
+Do **not** duplicate Mulch records here. `docs/index.md` is a navigation layer, not a second structured memory system.
+
+### Step 5 — Record Mulch entries for new things
+
+Only record things that are **new this session**:
 
 ```bash
 # Decision
@@ -73,7 +86,7 @@ npx mulch-cli record <domain> --type reference --name "<name>" --description "<t
 
 Run `npx mulch-cli status` to see available domains.
 
-### Step 5 — Commit and push
+### Step 6 — Commit and push
 
 ```bash
 git add -A
@@ -86,4 +99,5 @@ git push origin main
 - **Run this before ending every session** — not just when something big happened
 - **Multiple sessions per day** = multiple appended blocks in the same daily log file
 - **Mulch records** = the searchable brain for future agents picking up this project
+- **`docs/index.md`** = the quick human re-entry map
 - **Don't skip the commit** — uncommitted work is invisible to the next session

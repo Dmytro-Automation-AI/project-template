@@ -5,6 +5,9 @@
 - **Last updated:** [date] by [agent/person]
 - **Blocked by:** Nothing
 
+## Waiting On
+- [ ] Nothing right now
+
 ## Done
 - [ ] (nothing yet)
 
@@ -17,5 +20,5 @@
 - [ ] Tech stack decision
 - [ ] MVP implementation plan
 
-## Key Context
-- (Add important decisions, client preferences, and gotchas here)
+## Key Context / Gotchas
+- Add important client preferences, constraints, and non-obvious project facts here.
